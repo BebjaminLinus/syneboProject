@@ -1,0 +1,63 @@
+<aura:component controller="Component1ApexController">
+    
+    <aura:attribute name="clients" type="List"/>
+    <aura:attribute name="clientname" type="String"/>  
+    
+    <div aria-labelledby="newclientform" style="margin: 1%;">
+        
+    	<h1 style="padding:10px;">Get information about Client</h1>
+        <fieldset class="slds-box slds-theme--default slds-container--small" style="padding: 10px;">
+        
+        <form class="slds-form--stacked">          
+            <lightning:input aura:id="clientform" label="Name"
+                             name="clntname"
+                             value="{!v.clientname}"
+                             style="padding: 10px 0px;"
+                             /> 
+           <lightning:button label="Get information" 
+                             class="slds-m-top--medium"
+                             variant="brand"
+                             onclick="{!c.doInit}"/>
+            
+            <div class="table" style="padding: 20px 0px;">
+
+			<table style="width:100%">                
+                <caption>Client information</caption>
+                    <tr style="background-color: #FF8A71">
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Birth Date
+                        </th>
+                        <th>
+                            Phone Number
+                        </th>
+                        <th>
+                            Email Address
+                        </th>
+                    </tr>
+
+                    <aura:iteration items="{!v.clients}" var="client">
+                    <tr >
+                        <td label="Name">
+                            {!client.Name}
+                        </td>
+
+                        <td label="Birth Date">
+                            {!client.Birth_Date__c}
+                        </td>
+                        <td label="Phone Number">
+                            {!client.Phone_Number__c}
+                        </td>
+                        <td label="Email Address">
+                            {!client.Email_Address__c}
+                        </td>
+                    </tr>
+                    </aura:iteration>                    
+                </table>
+            </div>            
+        </form>  
+      </fieldset>      
+    </div>    
+</aura:component>
